@@ -21,21 +21,13 @@
 // knex("users").select("*"")
 
 import express from "express";
+import cors from "cors";
+import routes from "./routes";
 
 const app = express();
 
+app.use(cors());
 app.use(express.json()); //para requisições no insomnia
-
-app.get("/", (request, response) => {
-  console.log(request.query);
-
-  //   const users = [
-  //     { name: "Diego", age: 25 },
-  //     { name: "Vini", age: 21 },
-  //   ];
-
-  return response.json({ message: "Hello World" });
-  //   console.log("Acessou a rota!!!");
-});
+app.use(routes);
 
 app.listen(3333);
